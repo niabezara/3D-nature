@@ -6,9 +6,28 @@ import { sendMessage, type ContactState } from "@/app/lets-talk/actions";
 import { ArrowIcon } from "@/components/site/icons";
 import { Chip } from "./Chip";
 
-const PROJECT_TYPES = ["Landing page", "Web app", "Mobile app", "Dashboard", "Next.js build", "Animation & motion", "Something else"];
-const BUDGETS = ["< $2k", "$2–5k", "$5–10k", "$10k +"];
-const TIMELINES = ["ASAP", "This month", "1–3 months", "Flexible"];
+const PROJECT_TYPES = [
+  "Website development",
+  "Web application",
+  "E-commerce",
+  "SaaS platform",
+  "Custom interface",
+  "Interactive experience",
+  "Not sure yet",
+];
+const BUDGETS = [
+  "Under $2,000",
+  "$2,000 – $5,000",
+  "$5,000 – $10,000",
+  "$10,000+",
+  "Let's discuss",
+];
+const TIMELINES = [
+  "As soon as possible",
+  "Within 2–4 weeks",
+  "Within 1–3 months",
+  "No specific deadline",
+];
 const initial: ContactState = { status: "idle" };
 
 interface ContactFormProps {
@@ -30,12 +49,20 @@ export function ContactForm({ onSent, onReset }: ContactFormProps) {
 
   if (state.status === "sent") {
     return (
-      <div className="animate-rise py-24 motion-reduce:animate-none" role="status">
-        <p className="text-u-12.5 font-medium tracking-[0.16em] text-cream/60 uppercase">Message received</p>
-        <h2 className="mt-14 font-display text-u-120 leading-[0.9] font-normal phone:text-[72px]">Planted.</h2>
+      <div
+        className="animate-rise py-24 motion-reduce:animate-none"
+        role="status"
+      >
+        <p className="text-u-12.5 font-medium tracking-[0.16em] text-cream/60 uppercase">
+          Message received
+        </p>
+        <h2 className="mt-14 font-display text-u-120 leading-[0.9] font-normal phone:text-[72px]">
+          Planted.
+        </h2>
         <p className="mt-24 max-w-440 text-u-18 leading-[1.5] text-cream/85 phone:text-[16px]">
-          Thanks{state.name ? `, ${state.name}` : ""}. Your message is in my inbox and I’ll reply within 48 hours.
-          Meanwhile, the valley is growing back.
+          Thanks{state.name ? `, ${state.name}` : ""}. Your message is in my
+          inbox and I’ll reply within 48 hours. Meanwhile, the valley is growing
+          back.
         </p>
         <div className="mt-40 flex flex-wrap gap-14">
           <Link
@@ -57,22 +84,61 @@ export function ContactForm({ onSent, onReset }: ContactFormProps) {
   }
 
   return (
-    <form action={action} noValidate className="flex flex-col gap-22 phone:gap-26">
+    <form
+      action={action}
+      noValidate
+      className="flex flex-col gap-22 phone:gap-26"
+    >
       {/* honeypot */}
-      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="hidden"
+      />
 
       <div className="grid grid-cols-2 gap-24 phone:grid-cols-1 phone:gap-26">
         <Field n="01" label="Your name" error={errors.name}>
-          <input name="name" autoComplete="name" defaultValue={values?.name} placeholder="Ada Lovelace" className={inputClass} aria-invalid={!!errors.name} />
+          <input
+            name="name"
+            autoComplete="name"
+            defaultValue={values?.name}
+            placeholder="Name"
+            className={inputClass}
+            aria-invalid={!!errors.name}
+          />
         </Field>
         <Field n="02" label="Email" error={errors.email}>
-          <input name="email" type="email" autoComplete="email" defaultValue={values?.email} placeholder="ada@company.com" className={inputClass} aria-invalid={!!errors.email} />
+          <input
+            name="email"
+            type="email"
+            autoComplete="email"
+            defaultValue={values?.email}
+            placeholder="Email"
+            className={inputClass}
+            aria-invalid={!!errors.email}
+          />
         </Field>
         <Field n="03" label="Company" hint="optional">
-          <input name="company" autoComplete="organization" defaultValue={values?.company} placeholder="Brand or studio" className={inputClass} />
+          <input
+            name="company"
+            autoComplete="organization"
+            defaultValue={values?.company}
+            placeholder="Brand or studio"
+            className={inputClass}
+          />
         </Field>
         <Field n="04" label="Link" hint="optional" error={errors.link}>
-          <input name="link" inputMode="url" defaultValue={values?.link} placeholder="Figma, current site, a reference" className={inputClass} aria-invalid={!!errors.link} />
+          <input
+            name="link"
+            inputMode="url"
+            defaultValue={values?.link}
+            placeholder="Figma, current site, a reference"
+            className={inputClass}
+            aria-invalid={!!errors.link}
+          />
         </Field>
       </div>
 
@@ -80,7 +146,13 @@ export function ContactForm({ onSent, onReset }: ContactFormProps) {
         <Label as="legend" n="05" label="What do you need?" />
         <div className="mt-12 flex flex-wrap gap-8">
           {PROJECT_TYPES.map((v) => (
-            <Chip key={v} type="checkbox" name="projectTypes" value={v} defaultChecked={values?.projectTypes.includes(v)} />
+            <Chip
+              key={v}
+              type="checkbox"
+              name="projectTypes"
+              value={v}
+              defaultChecked={values?.projectTypes.includes(v)}
+            />
           ))}
         </div>
       </fieldset>
@@ -90,7 +162,13 @@ export function ContactForm({ onSent, onReset }: ContactFormProps) {
           <Label as="legend" n="06" label="Budget" />
           <div className="mt-12 flex flex-wrap gap-8">
             {BUDGETS.map((v) => (
-              <Chip key={v} type="radio" name="budget" value={v} defaultChecked={values?.budget === v} />
+              <Chip
+                key={v}
+                type="radio"
+                name="budget"
+                value={v}
+                defaultChecked={values?.budget === v}
+              />
             ))}
           </div>
         </fieldset>
@@ -98,7 +176,13 @@ export function ContactForm({ onSent, onReset }: ContactFormProps) {
           <Label as="legend" n="07" label="Timeline" />
           <div className="mt-12 flex flex-wrap gap-8">
             {TIMELINES.map((v) => (
-              <Chip key={v} type="radio" name="timeline" value={v} defaultChecked={values?.timeline === v} />
+              <Chip
+                key={v}
+                type="radio"
+                name="timeline"
+                value={v}
+                defaultChecked={values?.timeline === v}
+              />
             ))}
           </div>
         </fieldset>
@@ -117,7 +201,10 @@ export function ContactForm({ onSent, onReset }: ContactFormProps) {
       </Field>
 
       {formError && (
-        <p role="alert" className="rounded-[calc(12*var(--u))] border border-[#ffb3a1]/40 bg-[#ffb3a1]/10 px-16 py-12 text-u-14 text-[#ffd2c6] phone:rounded-[12px] phone:text-[13.5px]">
+        <p
+          role="alert"
+          className="rounded-[calc(12*var(--u))] border border-[#ffb3a1]/40 bg-[#ffb3a1]/10 px-16 py-12 text-u-14 text-[#ffd2c6] phone:rounded-[12px] phone:text-[13.5px]"
+        >
           {formError}
         </p>
       )}
@@ -146,22 +233,52 @@ export function ContactForm({ onSent, onReset }: ContactFormProps) {
 const inputClass =
   "mt-8 w-full border-b border-cream/25 bg-transparent pb-9 text-u-18 text-cream outline-none transition-colors duration-200 placeholder:text-cream/30 focus:border-cream aria-invalid:border-[#ffb3a1] phone:text-[17px]";
 
-function Label({ as: Tag = "span", n, label, hint }: { as?: "span" | "legend"; n: string; label: string; hint?: string }) {
+function Label({
+  as: Tag = "span",
+  n,
+  label,
+  hint,
+}: {
+  as?: "span" | "legend";
+  n: string;
+  label: string;
+  hint?: string;
+}) {
   return (
     <Tag className="flex items-baseline gap-10 text-u-12 font-medium tracking-[0.16em] text-cream/60 uppercase phone:text-[11px]">
       <span className="text-cream/35 tabular-nums">{n}</span>
       {label}
-      {hint && <span className="tracking-normal text-cream/35 normal-case">({hint})</span>}
+      {hint && (
+        <span className="tracking-normal text-cream/35 normal-case">
+          ({hint})
+        </span>
+      )}
     </Tag>
   );
 }
 
-function Field({ n, label, hint, error, children }: { n: string; label: string; hint?: string; error?: string; children: ReactNode }) {
+function Field({
+  n,
+  label,
+  hint,
+  error,
+  children,
+}: {
+  n: string;
+  label: string;
+  hint?: string;
+  error?: string;
+  children: ReactNode;
+}) {
   return (
     <label className="block">
       <Label n={n} label={label} hint={hint} />
       {children}
-      {error && <span className="mt-6 block text-u-13 text-[#ffb3a1] phone:text-[12px]">{error}</span>}
+      {error && (
+        <span className="mt-6 block text-u-13 text-[#ffb3a1] phone:text-[12px]">
+          {error}
+        </span>
+      )}
     </label>
   );
 }

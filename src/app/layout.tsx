@@ -23,8 +23,21 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Fernhollow",
-  description: "A regenerative design studio. Wander through a night valley of flowers that grows as you move.",
+  // absolute base for the share image; set SITE_URL once the domain is known (Vercel fills it in otherwise)
+  metadataBase: process.env.SITE_URL ? new URL(process.env.SITE_URL) : undefined,
+  title: {
+    default: "Nia Bezarashvili — Front-end Developer",
+    template: "%s · Nia Bezarashvili",
+  },
+  description:
+    "Front-end developer in Tbilisi building fast, accessible web apps with React, Next.js and TypeScript.",
+  openGraph: {
+    type: "website",
+    siteName: "Nia Bezarashvili",
+    title: "Nia Bezarashvili — Front-end Developer",
+    description:
+      "Fast, accessible web apps with React & Next.js. Front-end developer at Tegeta Motors, Tbilisi.",
+  },
 };
 
 export const viewport: Viewport = {

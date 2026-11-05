@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 import { ArrowIcon } from "@/components/site/icons";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SoundToggle } from "@/components/site/SoundToggle";
 import { useValley } from "@/components/valley/ValleyProvider";
+import { site } from "@/config/site";
 
 export function Hero() {
   const { introDone, soundOn, toggleSound, setHover } = useValley();
@@ -26,14 +28,13 @@ export function Hero() {
         <h1 className="font-display text-u-158 leading-[0.92] font-normal tracking-[-0.012em] whitespace-nowrap phone:text-[clamp(64px,19vw,96px)] phone:whitespace-normal">
           Grown, not built.
         </h1>
-        <p className="mt-48 text-u-20 leading-[1.3] phone:text-[17px]">
-          Rooted in nature.
-          <br />
-          Built for what’s next.
+        <p className="mt-48 max-w-560 text-u-20 leading-[1.4] phone:text-[17px]">
+          I’m {site.fullName}, a front-end developer in Tbilisi
+          crafting fast, accessible web apps with React &amp; Next.js.
         </p>
-        <a
-          href="#"
-          aria-label="See our work"
+        <Link
+          href="/work"
+          aria-label="See my work"
           onPointerEnter={startHover}
           onPointerLeave={stopHover}
           onFocus={startHover}
@@ -41,7 +42,7 @@ export function Hero() {
           className="mt-34 grid size-58 place-items-center rounded-full border-[1.5px] border-cream transition-colors duration-300 hover:bg-cream hover:text-ink"
         >
           <ArrowIcon className="size-22" />
-        </a>
+        </Link>
       </section>
 
       <div className="absolute right-44 bottom-44 flex items-center gap-18 text-u-12.5 font-medium tracking-[0.16em] uppercase phone:inset-x-20 phone:bottom-30 phone:justify-center phone:text-[11px]">

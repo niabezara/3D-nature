@@ -5,7 +5,7 @@ export const about = {
   specimen: "Specimen Nº 01 — The developer",
   latin: "Frontendia nocturna",
   authority: "Bezz., 2026",
-  headline: ["Grown in Tbilisi,", "raised online."],
+  headline: ["Front-end developer,", "based in Tbilisi."],
   bio: [
     "I’m a front-end developer at Tegeta Motors in Tbilisi. I build web apps and interfaces with React and Next.js, and I’m comfortable crossing into Node.js, Prisma and PostgreSQL when a feature needs it.",
     "I care about the parts people feel but rarely notice. The way a page loads, how a button answers, whether it still works on an old phone and with a screen reader.",
@@ -178,24 +178,10 @@ export const about = {
     },
     // the early years, before the first full-time role
     {
-      year: "2022",
-      role: "First WebGL experiment",
-      place: "Side project",
-      period: "2022",
-      note: "A field of particles that followed the cursor. Never looked back.",
-    },
-    {
       year: "2020",
-      role: "Junior web developer",
-      place: "Agency name",
-      period: "2020",
-      note: "Landing pages, many of them. Learned to sweat the details.",
-    },
-    {
-      year: "2019",
       role: "First line of HTML",
       place: "Tbilisi",
-      period: "2019",
+      period: "2020",
       note: "View source on a site I loved, then tried to rebuild it.",
     },
   ],

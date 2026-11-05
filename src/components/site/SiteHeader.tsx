@@ -1,11 +1,11 @@
 import Link from "next/link";
+import { site } from "@/config/site";
 
-type Page = "work" | "about" | "journal" | "talk";
+type Page = "work" | "about" | "talk";
 
 const links: { label: string; href: string; page?: Page }[] = [
   { label: "Work", href: "/work", page: "work" },
   { label: "About", href: "/about", page: "about" },
-  { label: "Journal", href: "/journal", page: "journal" },
 ];
 
 interface SiteHeaderProps {
@@ -30,7 +30,7 @@ export function SiteHeader({ current, tone = "night" }: SiteHeaderProps) {
       }`}
     >
       <Link href="/" className="text-u-26 font-medium tracking-[-0.02em]">
-        NiaBezz
+        {site.name}
       </Link>
       {/* on phones the page links drop to a second row under the logo and button */}
       <nav

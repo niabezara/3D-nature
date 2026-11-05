@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { useValleyCover } from "@/components/valley/useValleyCover";
 import { work } from "@/config/work";
 import { ProjectOrbit } from "./ProjectOrbit";
-import { Testimonial } from "./Testimonial";
+// import { Testimonial } from "./Testimonial";
 
 const MotionLink = motion.create(Link);
 
@@ -16,7 +16,11 @@ export function WorkView() {
   const scroller = useRef<HTMLElement>(null);
   const hero = useRef<HTMLElement>(null);
 
-  const { scrollYProgress } = useScroll({ container: scroller, target: hero, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({
+    container: scroller,
+    target: hero,
+    offset: ["start start", "end start"],
+  });
   const textY = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
@@ -46,12 +50,21 @@ export function WorkView() {
           style={{ scale: videoScale }}
           className="absolute inset-0 h-full w-full object-cover object-[50%_70%]"
         />
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[62%] bg-gradient-to-b from-black via-black/75 to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_34%_22%_at_50%_54%,rgb(0_0_0/0.6),transparent_75%)]" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[62%] bg-gradient-to-b from-black via-black/75 to-transparent"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_34%_22%_at_50%_54%,rgb(0_0_0/0.6),transparent_75%)]"
+        />
 
         <SiteHeader current="work" />
 
-        <motion.div style={{ y: textY, opacity: textOpacity }} className="relative z-20 flex flex-col items-center px-16 pt-150 text-center text-shadow-[0_2px_24px_rgb(0_0_0/0.75)] phone:pt-150">
+        <motion.div
+          style={{ y: textY, opacity: textOpacity }}
+          className="relative z-20 flex flex-col items-center px-16 pt-150 text-center text-shadow-[0_2px_24px_rgb(0_0_0/0.75)] phone:pt-150"
+        >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +74,9 @@ export function WorkView() {
             <span className="rounded-[calc(6*var(--u))] bg-cream px-8 py-2 text-u-14 font-medium text-ink phone:rounded-[6px] phone:text-[13px]">
               {work.tag.badge}
             </span>
-            <span className="text-u-14 font-medium text-cream/65 phone:text-[13px]">{work.tag.text}</span>
+            <span className="text-u-14 font-medium text-cream/65 phone:text-[13px]">
+              {work.tag.text}
+            </span>
           </motion.div>
 
           <motion.h1
@@ -73,7 +88,9 @@ export function WorkView() {
             {work.title.line1}
             <br />
             {work.title.before}
-            <span className="font-serif font-normal italic">{work.title.accent}</span>
+            <span className="font-serif font-normal italic">
+              {work.title.accent}
+            </span>
             {work.title.after}
           </motion.h1>
 
@@ -101,7 +118,10 @@ export function WorkView() {
           </MotionLink>
         </motion.div>
 
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-160 bg-gradient-to-t from-black to-transparent" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-160 bg-gradient-to-t from-black to-transparent"
+        />
 
         <motion.p
           initial={{ opacity: 0 }}
@@ -111,7 +131,10 @@ export function WorkView() {
           className="absolute inset-x-0 bottom-32 z-30 flex flex-col items-center gap-10 text-u-12 font-medium tracking-[0.16em] text-cream/70 uppercase phone:text-[11px]"
         >
           Scroll through the work
-          <span aria-hidden className="h-36 w-px animate-pulse bg-cream/50 motion-reduce:animate-none" />
+          <span
+            aria-hidden
+            className="h-36 w-px animate-pulse bg-cream/50 motion-reduce:animate-none"
+          />
         </motion.p>
       </section>
 
@@ -119,7 +142,7 @@ export function WorkView() {
       <ProjectOrbit scroller={scroller} />
 
       {/* ------------------------------------------------ testimonial */}
-      <Testimonial scroller={scroller} />
+      {/* <Testimonial scroller={scroller} /> */}
     </motion.main>
   );
 }

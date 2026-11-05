@@ -3,7 +3,7 @@ import { WorkView } from "@/components/work/WorkView";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Selected work: dashboards, 3D scenes and interfaces built for teams who track what matters.",
+  description: "Selected work: a multi-brand showroom kiosk, brand websites, an insurance flow and more, built with React and Next.js.",
 };
 
 export default function WorkPage() {

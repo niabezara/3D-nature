@@ -3,7 +3,7 @@ import { AboutView } from "@/components/about/AboutView";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Frontend developer from Tbilisi building immersive, motion-rich websites.",
+  description: "Front-end developer in Tbilisi. Experience at Tegeta Motors, Devspark Studio and TetroByte, and the stack behind it.",
 };
 
 export default function AboutPage() {
